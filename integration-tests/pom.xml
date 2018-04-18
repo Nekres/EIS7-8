@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.nrs</groupId>
+        <artifactId>HomeWork1</artifactId>
+        <version>1.0</version>
+    </parent>
+    <artifactId>integration-tests</artifactId>
+    <packaging>jar</packaging>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+    <groupId>com.nrs</groupId>
+    <artifactId>vehicle-manager</artifactId>
+</dependency>
+         <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+    <groupId>com.nrs</groupId>
+    <artifactId>service</artifactId>
+    </dependency>
+        <dependency>
+            <groupId>com.nrs</groupId>
+            <artifactId>dao</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.nrs</groupId>
+            <artifactId>customized-dao</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <scope>test</scope>
+            </dependency>
+        <dependency>
+            <groupId>com.nrs</groupId>
+            <artifactId>caching</artifactId>
+        </dependency>
+        
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-orm</artifactId>
+</dependency>
+ <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+    </dependency>
+     <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+           </dependency>
+           <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+            </dependency>
+    </dependencies>
+</project>

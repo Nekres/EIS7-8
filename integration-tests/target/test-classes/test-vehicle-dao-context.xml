@@ -1,0 +1,46 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd		
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+    <tx:annotation-driven transaction-manager="transactionManager"  />
+    <bean id="transactionManager"
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactoryBean"/>
+    </bean>
+     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" primary="true">
+      <property name="driverClassName" value="org.h2.Driver" />
+      <property name="url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" />
+      <property name="username" value="stud_mshykoriak" />
+      <property name="password" value="stud_mshykoriak" />
+   </bean>
+    <bean name="vehicleDao" class="com.nrs.vehicle.dao.VehicleDao">
+    </bean>
+    <bean id="entityManagerFactoryBean" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="packagesToScan" value="com.nrs.vehicle.entity" />
+      <property name="jpaVendorAdapter">
+         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+      </property>
+      <property name="jpaProperties">
+         <props>
+            <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
+         </props>
+      </property>
+      <property name="persistenceUnitName" value="local_persistence" />
+		<property name="persistenceXmlLocation" value="classpath:persistance.xml"/>
+   </bean>
+   <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+</beans>

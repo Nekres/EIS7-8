@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.nrs</groupId>
+        <artifactId>HomeWork1</artifactId>
+        <version>1.0</version>
+    </parent>
+    <artifactId>deploy</artifactId>
+    <packaging>jar</packaging>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    
+    <build>
+        <plugins>
+             <plugin>
+      <groupId>org.liquibase</groupId>
+      <artifactId>liquibase-maven-plugin</artifactId>
+      <version>3.6.1</version>
+      <configuration>
+        <changeLogFile>src/main/resources/liquibase/liquibase-main.xml</changeLogFile>
+          <driver>oracle.jdbc.driver.OracleDriver</driver>
+          <url>jdbc:oracle:thin:@odsstudora01.exigengroup.com:1521:testdb</url>
+          <username>stud_mshykoriak</username>
+          <password>stud_mshykoriak</password>
+        </configuration>
+      <executions>
+        <execution>
+          <phase>process-resources</phase>
+          <goals>
+            <goal>update</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+        </plugins>
+        
+    </build>
+   <dependencies>
+       <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc8</artifactId>
+            </dependency>
+            <dependency>
+    <groupId>org.liquibase</groupId>
+    <artifactId>liquibase-core</artifactId>
+</dependency>
+   </dependencies>
+</project>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+<changeSet id="1" author="stud-mshykoriak"> 
+<createTable tableName="Engine">
+<column autoIncrement="true" name="id" type="BIGINT"> 
+        <constraints primaryKey="true"/> 
+      </column> 
+<column name="transmission_type" type="varchar(60)">
+    <constraints nullable="false"/>
+</column>
+<column name="model" type="varchar(60)">
+    <constraints nullable="false"/>
+</column>
+</createTable>
+</changeSet>
+<changeSet id="2" author="stud-mshykoriak">
+    <createTable tableName="Manufacturer">
+    <column autoIncrement="true" name="id" type="BIGINT"> 
+        <constraints nullable="false" primaryKey="true"/> 
+    </column>
+    <column name="name" type="varchar(50)">
+        <constraints nullable="false"/>
+    </column>
+    <column name="country" type="varchar(50)">
+        <constraints nullable="false"/>
+    </column>
+    <column name="site_url" type="varchar(250)">
+    </column>
+    </createTable>
+</changeSet>
+<changeSet id="3" author="stud-mshykoriak">
+    <createTable tableName="Vehicle">
+         <column autoIncrement="true" name="vehicle_id" type="BIGINT"> 
+        <constraints nullable="false" primaryKey="true"/> 
+    </column>
+    <column name="weight" type="float"></column>
+    <column name="height" type="float"></column>
+    <column name="length" type="float"></column>
+    <column name="max_speed" type="float"></column>
+    <column name="cost" type="float"></column>
+    <column name="produce_date" type="date"></column>
+    <column name="manufacturer_id" type="int">
+        <constraints nullable="false"
+                             foreignKeyName="fk_manufacturer"
+                             references="Manufacturer(id)"/>
+    </column>
+    <column name="engine_id" type="int">
+        <constraints nullable="false"
+        foreignKeyName="fk_engine"
+        references="Engine(id)" />
+    </column>
+    
+    </createTable>
+</changeSet>
+<changeSet id="4" author="stud-mshykoriak">
+    <createTable tableName="Store">
+        <column name="store_id" type="BIGINT" autoIncrement="true">
+            <constraints nullable="false" primaryKey="true"/>
+        </column>
+        <column name="name" type="varchar(50)"></column>
+        <column name="address" type="varchar(50)"></column>
+    </createTable>
+</changeSet>
+<changeSet id="5" author="stud-mshykoriak">
+    <createTable tableName="StoreVehicleInterim">
+        <column name="vehicle_id" type="BIGINT" >
+            <constraints nullable="false" primaryKey="true"/>
+        </column>
+        <column name="store_id" type="BIGINT">
+            <constraints nullable="false" primaryKey="true"/>
+        </column>
+    </createTable>
+</changeSet>
+<changeSet id="6" author="stud-mshykoriak">
+    <createTable tableName="MotorCar">
+        <column name="vehicle_id" type="bigint"></column>
+     <column name="is_public" type="boolean"></column>
+        <column name="auto_bodywork_type" type="boolean"></column>
+    </createTable>
+</changeSet>
+<changeSet id="7" author="stud-mshykoriak">
+    <createTable tableName="MotorCycle">
+        <column name="vehicle_id" type="bigint"></column>
+        <column name="is_one_man_type" type="boolean"></column>
+        <column name="has_side_car" type="boolean"></column>
+    </createTable>
+</changeSet>
+</databaseChangeLog> 

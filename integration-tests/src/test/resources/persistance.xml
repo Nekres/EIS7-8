@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="local_persistence">
+    <description> Spring Hibernate JPA Configuration Example</description>
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.nrs.vehicle.entity.Motorcycle</class>
+    <class>com.nrs.vehicle.entity.Engine</class>
+    <class>com.nrs.vehicle.entity.MotorCar</class>
+    <class>com.nrs.vehicle.entity.Vehicle</class>
+    <class>com.nrs.vehicle.entity.Store</class>
+    <class>com.nrs.vehicle.entity.Manufacturer</class>
+    <class>com.nrs.vehicle.entity.StoreVehicleInterim</class>
+    <validation-mode>AUTO</validation-mode>
+    <properties>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+      <property name="current_session_context_class" value="thread" />
+    </properties>
+  </persistence-unit>
+</persistence>
